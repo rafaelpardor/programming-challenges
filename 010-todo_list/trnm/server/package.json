@@ -1,5 +1,5 @@
 {
-  "name": "todo-list",
+  "name": "todo-list_server",
   "version": "0.1.0",
   "description": "Todo list with React, TypeScript, NodeJS, and MongoDB",
   "main": "src/index.ts",
@@ -7,9 +7,10 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "start": "concurrently \"tsc -w\" \"nodemon dist/js/app.js\""
+    "start": "concurrently \"tsc -w\" \"nodemon dist/js/index.js\""
   },
   "dependencies": {
+    "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongoose": "^6.0.13",

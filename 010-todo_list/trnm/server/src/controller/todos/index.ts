@@ -2,16 +2,26 @@ import { Response, Request } from "express"
 import { ITodo } from "../../types/todo"
 import Todo from "../../models/todo"
 
-const getTodos = async (req: Request, res: Response): Promise<void> => {
+export const getTodos = async (req: Request, res: Response): Promise<void> => {
   try {
-    const todos: ITodo[] = await Todo.find();
-    res.status(200).json({ todos });
+    const getTodos: ITodo[] = await Todo.find();
+    res.status(200).json({ getTodos });
   } catch (error) {
     throw error;
   }
 }
 
-const addTodo = async (req: Request, res: Response): Promise<void> => {
+export const getTodoById = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { params: { id }} = req;
+    const getTodo: ITodo | null = await Todo.findById({ _id: id });
+    res.status(200).json({ getTodo });
+  } catch (error) {
+    throw error;
+  }
+}
+
+export const addTodo = async (req: Request, res: Response): Promise<void> => {
   try {
     const body = req.body as Pick<ITodo, "name" | "description" | "status">
     const todo: ITodo = new Todo({
@@ -21,15 +31,14 @@ const addTodo = async (req: Request, res: Response): Promise<void> => {
     });
 
     const newTodo: ITodo = await todo.save();
-    const allTodos: ITodo[] = await Todo.find();
 
-    res.status(200).json({ message: "Todo added", todo: newTodo, todos: allTodos });
+    res.status(200).json({ message: "Todo added", todo: newTodo });
   } catch (error) {
     throw error;
   }
 }
 
-const updateTodo = async (req: Request, res: Response): Promise<void> => {
+export const updateTodo = async (req: Request, res: Response): Promise<void> => {
   try {
     const {
       params: { id },
@@ -39,29 +48,23 @@ const updateTodo = async (req: Request, res: Response): Promise<void> => {
       { _id: id },
       body
     );
-    const allTodos: ITodo[] = await Todo.find();
     res.status(200).json({
       message: "Todo updated",
-      todo: updateTodo,
-      todos: allTodos,
+      todo: updateTodo
     });
   } catch (error) {
     throw error;
   }
 }
 
-const deleteTodo = async (req: Request, res: Response): Promise<void> => {
+export const deleteTodo = async (req: Request, res: Response): Promise<void> => {
   try {
     const deleteTodo: ITodo | null = await Todo.findByIdAndRemove(req.params.id);
-    const allTodos: ITodo[] = await Todo.find();
     res.status(200).json({
       message: "Todo deleted",
-      todo: deleteTodo,
-      todos: allTodos,
+      todo: deleteTodo
     });
   } catch (error) {
     throw error;
   }
 }
-
-export { getTodos, addTodo, updateTodo, deleteTodo }

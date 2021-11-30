@@ -1,5 +1,7 @@
 {
     "env": {
+        "PORT": 3000,
+        "DEV": true,
         "MONGO_USER": "mongo",
         "MONGO_PASSWORD": "mongo",
         "MONGO_DB": "todolist"
