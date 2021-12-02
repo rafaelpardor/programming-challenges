@@ -2,7 +2,7 @@ import express, { Express } from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 
-import router from "./routes/index";
+import router from "./todo/routes/index";
 
 const app: Express = express();
 

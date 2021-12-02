@@ -9,5 +9,5 @@
     "forceConsistentCasingInFileNames": true
   },
   "include": ["src/**/*"],
-  "exclude": ["src/types/*.ts", "node_modules"]
+  "exclude": ["src/todo/repository/types/*.ts", "node_modules"]
 }
