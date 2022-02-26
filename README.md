@@ -3,6 +3,8 @@
 > What I cannot create, I do not understand.
 > - Richard Feyman
 
+![Programming Challegnes](./programming_challenges.jpg)
+
 Learning programming is like learning to do parkour, you are not going
 to learn how to do parkour by reading a book, you have to stamp yourself
 on the floor.
