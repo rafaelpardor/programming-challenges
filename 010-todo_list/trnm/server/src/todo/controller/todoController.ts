@@ -1,5 +1,7 @@
 import { Response, Request } from "express"
-import { ITodo } from "../repository/types/todo"
+import { ITodo } from "../repository/types/itodo"
+
+import * as TodoService from "../service/todoService";
 import Todo from "../repository/models/todo"
 
 export const getTodos = async (req: Request, res: Response): Promise<void> => {
@@ -11,14 +13,13 @@ export const getTodos = async (req: Request, res: Response): Promise<void> => {
   }
 }
 
-export const getTodoById = async (req: Request, res: Response): Promise<void> => {
+export const getTodoById = async (req: Request, res: Response): Promise<any> => {
   try {
     const { params: { id }} = req;
     if (!id) {
       res.status(400).json({ message: "Todo ID not provided" });
     }
     try {
-      const getTodo: ITodo | null = await Todo.findById({ _id: id });
       res.status(200).json({ getTodo });
     } catch {
       res.status(500).json({ message: "ID not found" });
