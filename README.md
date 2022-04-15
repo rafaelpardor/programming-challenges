@@ -32,3 +32,5 @@ on the floor.
   * Sierna: The Algorithm Design Manual
   * Carmen et al: Introduction to Algorithms
   * Russel: Artificial Intellingece: A Modern Approach
+
+> Every challenge will have its own branch
